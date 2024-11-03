@@ -1,20 +1,33 @@
-from src.Blackbody import Blackbody
 import numpy as np
+import pandas as pd
+
+from src.Blackbody import Blackbody
+
 
 blackbody = Blackbody()
 
-wavelength = 8  # Wavelength in micrometers
-temperature = 200  # Temperature in Kelvin
-exitance = blackbody.planck_exitance(wavelength, temperature)
+Wavelength = 8  # Wavelength in micrometers
+Temperature = 200  # Temperature in Kelvin
+exitance = blackbody.planck_exitance(Wavelength, Temperature)
 print(f"Exitance: {exitance} W/m^2/sr/µm")
 
-wavelength = 8  # Wavelength in micrometers
-temperature = 200  # Temperature in Kelvin
-radiance = blackbody.planck_radiance(wavelength, temperature)
+Wavelength = 8  # Wavelength in micrometers
+Temperature = 200  # Temperature in Kelvin
+radiance = blackbody.planck_radiance(Wavelength, Temperature)
 print(f"Radiance: {radiance} W/m^2/sr/µm")
 
-wavelengths = np.array([7, 8, 9, 10])  # Array of wavelengths in micrometers
-rsr = np.array([0.1, 0.8, 0.5, 0.2])  # Array of relative spectral responses
-temperature = 32  # Temperature in Celsius
-band_radiance = blackbody.band_radiance(wavelengths, rsr, temperature)
+#Enter CSV Path of the RSR File
+csv_path = '/Users/parkermei/Projects/Github/uas-thermal-cal/data/cam_sheets/flir_rsr.csv'
+#Convert the csv into a pandas dataframe
+Datasheet = pd.read_csv(csv_path, sep=',', header=0)
+
+#Convert wavelengths into np array
+wavelength = Datasheet['Wavelength (µm)']
+wavelengths = wavelength.to_numpy()
+#Convert rsr into np array
+rsr = Datasheet['Relative response']
+rsr = rsr.to_numpy()
+
+Temperature = 32  # Temperature in Celsius
+band_radiance = blackbody.band_radiance(wavelengths, rsr, Temperature)
 print(f"Band Radiance: {band_radiance} W/m^2/sr")
