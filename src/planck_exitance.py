@@ -33,4 +33,3 @@ class Planck:
 
 planck_calculator = Planck()
 exitance = planck_calculator.exitance(8, 200)
-print(exitance)
