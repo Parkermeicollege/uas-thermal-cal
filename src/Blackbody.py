@@ -63,7 +63,6 @@ class Blackbody:
         Band radiance for pixel element.
         """
         temp = temperature + 273.15  # Convert temperature to Kelvin
-        band_radiance = np.zeros(len(wavelengths))
         band_radiance = np.multiply(self.planck_radiance(wavelengths, temp), rsr)
         total_radiance = integrate.trapezoid(band_radiance, wavelengths)
         return total_radiance

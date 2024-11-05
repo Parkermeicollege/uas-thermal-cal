@@ -1,7 +1,6 @@
-import numpy as np
 import pandas as pd
 
-from src.Blackbody import Blackbody
+from src.blackbody import Blackbody
 
 
 blackbody = Blackbody()
@@ -28,6 +27,7 @@ wavelengths = wavelength.to_numpy()
 rsr = Datasheet['Relative response']
 rsr = rsr.to_numpy()
 
-Temperature = 32  # Temperature in Celsius
+Temperature = 30  # Temperature in Celsius
 band_radiance = blackbody.band_radiance(wavelengths, rsr, Temperature)
+
 print(f"Band Radiance: {band_radiance} W/m^2/sr")
