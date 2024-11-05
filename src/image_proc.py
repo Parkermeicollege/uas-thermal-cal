@@ -1,6 +1,6 @@
-import numpy as np
-from typing import Tuple, Optional, Union, List
+#Parker Mei pmm4630@rit.edu
 from dataclasses import dataclass
+import numpy as np
 
 @dataclass
 class PixelStats:

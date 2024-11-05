@@ -1,6 +1,5 @@
 #Parker Mei pmm46300@rit.edu
 import os
-from typing import Optional
 import numpy as np
 import spectral.io.envi as envi
 #spectral python is a library that can read in ENVI format headers and fiels

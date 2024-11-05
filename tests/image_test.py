@@ -14,6 +14,8 @@ print(f"Pixel mean: {pixel_stats.mean}")
 print(f"Pixel std: {pixel_stats.std}")
 #print(f"Channel values: {pixel_stats.channel_values}")
 
+print(pixel_stats.channel_values.shape)
+
 # Get mean image
 mean_image = processor.get_mean_image()
 
